@@ -1,0 +1,11 @@
+/samples/
+/target/
+/test/
+/.vscode/
+/build/
+/extras/aseprite/
+/extras/old/
+*.wav
+*.umx
+*.txt
+# *.gif
