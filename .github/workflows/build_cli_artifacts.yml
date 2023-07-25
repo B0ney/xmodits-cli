@@ -14,6 +14,9 @@ jobs:
           - linux-x86_64-gnu
           - linux-x86_64-musl
 
+          - linux-i686-gnu
+          - linux-i686-musl
+
           - linux-aarch64-gnu
           - linux-aarch64-musl
 
@@ -26,6 +29,12 @@ jobs:
 
           - target: linux-x86_64-musl
             arch: x86_64-unknown-linux-musl
+
+          - target: linux-i686-gnu
+            arch: i686-unknown-linux-gnu
+
+          - target: linux-i686-musl
+            arch: i686-unknown-linux-musl
 
           - target: linux-aarch64-gnu
             arch: aarch64-unknown-linux-gnu
