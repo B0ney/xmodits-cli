@@ -7,16 +7,16 @@ use cli::Cli;
 fn main() {
     let mut cli = Cli::parse_from(wild::args());
 
+    if cli.info {
+        return api::info(cli);
+    }
+
     let destination = match destination_dir(&mut cli.trackers) {
         Ok(path) => path,
         Err(e) => {
             return eprintln!("{}", e);
         }
     };
-
-    if cli.info {
-        return api::info(cli);
-    }
 
     #[cfg(windows)]
     let no_exit_prompt = cli.no_exit_prompt;

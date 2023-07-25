@@ -52,6 +52,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "ascii"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d92bec98840b8f03a5ff5413de5293bfcd8bf96467cf5452609f939ec6f5de16"
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -803,8 +809,9 @@ dependencies = [
 [[package]]
 name = "xmodits-lib"
 version = "0.7.0"
-source = "git+https://github.com/B0ney/xmodits-lib.git?rev=8d81d0c#8d81d0c31d84d0e96d12264a33753d6d38a176eb"
+source = "git+https://github.com/B0ney/xmodits-lib.git?rev=b72ca08#b72ca0892d21d5aa4c19ee8752710253664eb00f"
 dependencies = [
+ "ascii",
  "bytemuck",
  "dasp",
  "extended",
