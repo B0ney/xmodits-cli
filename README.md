@@ -20,22 +20,19 @@
 |``.raw``||
 
 ## How to Use
-Note: On Windows, the CLI binary has been renamed to "xmodits-cli.exe"
 
 ```
-xmodits <module path> [destination folder]
+xmodits {ARGUMENTS} <module path> [destination folder]
 
 e.g:
     xmodits ./test.s3m ~/Music/Samples/
 
-e.g: 
     xmodits ./test.s3m
 
-e.g:
     xmodits ./mod1.mod ./mod2.it ./mod3.s3m [destination folder]
 
-e.g: (linux only)
-    xmodits ./*.mod ~/Downloads
+    xmodits --fmt="8svx" ./*.mod ~/Downloads/samples/8svx
+
 ```
 If the destination is not provided, xmodits will place the ripped samples in a self contained folder in the current working directory.
 

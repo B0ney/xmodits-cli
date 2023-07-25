@@ -70,13 +70,13 @@ fn destination_dir(paths: &mut Vec<PathBuf>) -> Result<PathBuf, String> {
     Ok(folder)
 }
 
+#[cfg(windows)]
 fn expand_tilde(path: PathBuf) -> PathBuf {
-    #[cfg(not(windows))]
-    return path;
+    let path = path.display().to_string();
+    PathBuf::new().join(shellexpand::tilde(&path).as_ref())
+}
 
-    #[cfg(windows)]
-    {
-        let path = path.display().to_string();
-        PathBuf::new().join(shellexpand::tilde(&path).as_ref())
-    }
+#[cfg(not(windows))]
+fn expand_tilde(path: PathBuf) -> PathBuf {
+    return path;
 }
