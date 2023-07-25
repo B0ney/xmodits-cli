@@ -54,7 +54,7 @@ pub struct Cli {
     pub no_exit_prompt: bool,
 
     #[arg(help = "Export formats")]
-    #[arg(short, long = "fmt", value_parser=["wav", "aiff", "8svx", "raw"], default_value_t=String::from("wav"))]
+    #[arg(short, long = "fmt", value_parser=["wav", "aiff", "8svx", "its", "s3i", "raw"], default_value_t=String::from("wav"))]
     pub format: String,
 
     #[arg(help = "Print information about a tracker module")]
