@@ -19,3 +19,8 @@ wild = "2.1.0"
 
 [target.'cfg(windows)'.dependencies]
 shellexpand = "3.0"
+
+[profile.release.package.xmodits]
+strip = true
+opt-level = "s"
+codegen-units = 1
