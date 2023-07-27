@@ -5,7 +5,16 @@ mod cli;
 use cli::Cli;
 
 fn main() {
+    // todo: make neater
+    if wild::args().peekable().nth(1) == Some("--Meta".into()) {
+        return build_info();
+    }
+
     let mut cli = Cli::parse_from(wild::args());
+    
+    if cli.meta {
+        return build_info();
+    }
 
     if cli.info {
         return api::info(cli);
@@ -79,4 +88,31 @@ fn expand_tilde(path: PathBuf) -> PathBuf {
 #[cfg(not(windows))]
 fn expand_tilde(path: PathBuf) -> PathBuf {
     return path;
+}
+
+
+pub(crate) mod built_info {
+    include!(concat!(env!("OUT_DIR"), "/built.rs"));
+}
+
+fn build_info() {
+    use std::io::{stdout, Write};
+    let mut lock = stdout().lock();
+
+    let meta = [
+        ("Binary name", built_info::PKG_NAME),
+        ("Version", built_info::PKG_VERSION),
+        ("Author(s)", built_info::PKG_AUTHORS),
+        ("License", built_info::PKG_LICENSE),
+        ("Repository", built_info::PKG_REPOSITORY),
+        ("Commit Hash", built_info::GIT_COMMIT_HASH.unwrap_or("None")),
+        ("Build Target", built_info::TARGET),
+        ("Rustc Version", built_info::RUSTC_VERSION),
+        ("Target Architechture", built_info::CFG_TARGET_ARCH),
+        ("Build Time", built_info::BUILT_TIME_UTC),
+    ];
+    
+    for (a, b) in meta {
+        writeln!(lock, "{a}: {b}").expect("printing info");
+    }
 }
