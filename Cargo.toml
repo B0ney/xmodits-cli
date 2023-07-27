@@ -20,8 +20,11 @@ wild = "2.1.0"
 [target.'cfg(windows)'.dependencies]
 shellexpand = "3.0"
 
+[features]
+with_metadata = ["built"]
+
 [build-dependencies]
-built = { version = "0.6.1", features = ["chrono", "git2"] }
+built = { version = "0.6.1", features = ["chrono", "git2"], optional = true }
 
 [profile.release]
 strip = true

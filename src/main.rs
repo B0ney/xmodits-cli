@@ -5,13 +5,14 @@ mod cli;
 use cli::Cli;
 
 fn main() {
-    // todo: make neater
+    #[cfg(feature = "with_metadata")]
     if wild::args().peekable().nth(1) == Some("--Meta".into()) {
         return build_info();
     }
 
     let mut cli = Cli::parse_from(wild::args());
-    
+
+    #[cfg(feature = "with_metadata")]
     if cli.meta {
         return build_info();
     }
@@ -90,29 +91,32 @@ fn expand_tilde(path: PathBuf) -> PathBuf {
     return path;
 }
 
-
+#[cfg(feature = "with_metadata")]
 pub(crate) mod built_info {
     include!(concat!(env!("OUT_DIR"), "/built.rs"));
 }
 
+#[cfg(feature = "with_metadata")]
 fn build_info() {
-    use std::io::{stdout, Write};
-    let mut lock = stdout().lock();
-
-    let meta = [
-        ("Binary name", built_info::PKG_NAME),
-        ("Version", built_info::PKG_VERSION),
-        ("Author(s)", built_info::PKG_AUTHORS),
-        ("License", built_info::PKG_LICENSE),
-        ("Repository", built_info::PKG_REPOSITORY),
-        ("Commit Hash", built_info::GIT_COMMIT_HASH.unwrap_or("None")),
-        ("Build Target", built_info::TARGET),
-        ("Rustc Version", built_info::RUSTC_VERSION),
-        ("Target Architechture", built_info::CFG_TARGET_ARCH),
-        ("Build Time", built_info::BUILT_TIME_UTC),
-    ];
-    
-    for (a, b) in meta {
-        writeln!(lock, "{a}: {b}").expect("printing info");
-    }
+    println!("Binary name: {}
+Version: {}
+Author(s): {}
+License: {}
+Repository: {}
+Commit Hash: {}
+Build Target: {}
+Rustc Version: {}
+Target Architechture: {}
+Build Time: {}",
+        built_info::PKG_NAME,
+        built_info::PKG_VERSION,
+        built_info::PKG_AUTHORS,
+        built_info::PKG_LICENSE,
+        built_info::PKG_REPOSITORY,
+        built_info::GIT_COMMIT_HASH.unwrap_or("none"),
+        built_info::TARGET,
+        built_info::RUSTC_VERSION,
+        built_info::CFG_TARGET_ARCH,
+        built_info::BUILT_TIME_UTC,
+    );
 }

@@ -66,6 +66,7 @@ pub struct Cli {
     #[arg(short = 'k', long, default_value_t = 0)]
     pub threads: u8,
 
+    #[cfg(feature = "with_metadata")]
     #[arg(help = "Display information about this binary")]
     #[arg(long="Meta")]
     pub meta: bool,
