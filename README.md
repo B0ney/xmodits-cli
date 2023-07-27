@@ -85,11 +85,11 @@ Windows 7 is the minimum OS that could run xmodits. I tried to get Windows XP wo
 xmodits is compiled with vcruntime (msvc only) embedded, so it should run out of the box.
 
 ### Linux
-**It is recommended that you download the ``*-musl`` variant.**
+**For backwards (and forwards) compatability, it is recommended that you download the ``*-musl`` variant.**
 
 Older linux sytems may have glibc versions too old to run the program.
 
-You'll most likely get an error like this if you attempt to run the ``-gnu`` variant:
+You'll most likely get an error like this if you attempt to run the ``*-gnu`` variant:
 ```
 libc.so.6: version `GLIBC_2.18` not found (required by ./xmodits)
 ```
