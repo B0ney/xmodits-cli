@@ -80,7 +80,7 @@ The compiled binary is placed in: ``xmodits-cli/target/release/``
 (***nix systems only**) You may get a ``Permission denied`` error if you attempt to run the program. In that case, you'll need to mark the binary as executable:
 
 ```shell
-chmod +x xmodits-cli
+chmod +x xmodits
 ```
 
 (**Optional**) Compile with build metadata embedded in the binary (enables ``--Meta`` flag), **This will take longer to compile**:
