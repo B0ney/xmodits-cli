@@ -60,12 +60,20 @@ If you want to customize how ripped samples are named, the following arguments c
 ||--info| Print information about a tracker module. |
 
 # Building
+Install the Rust compiler if you haven't already: https://www.rust-lang.org/tools/install
 
+Clone the source code:
 ```shell
+git clone https://github.com/B0ney/xmodits-cli
+```
+
+Build:
+```shell
+cd xmodits-cli
 cargo build --release
 ```
 
-Compile with build metadata embedded in the binary (enables ``--Meta`` flag), **This will take longer to compile**:
+(**Optional**) Compile with build metadata embedded in the binary (enables ``--Meta`` flag), **This will take longer to compile**:
 ```shell
 cargo build --release --features="with_metadata"
 ```
