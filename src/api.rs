@@ -72,7 +72,8 @@ pub fn rip(cli: Cli, destination: PathBuf) {
 
     let rip_file = move |path: PathBuf| {
         extract(&path, &destination, &ripper, self_contained).unwrap_or_else(|error| {
-            eprintln!("\x1b[31mERROR: \x1b[0m{}\n   {}\n", file_name(&path), error)
+            // eprintln!("\x1b[31mERROR: \x1b[0m{}\n   {}\n", file_name(&path), error)
+            eprintln!("ERROR: {}\n   {}\n", file_name(&path), error)
         })
     };
 
