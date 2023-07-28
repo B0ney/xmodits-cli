@@ -1,7 +1,7 @@
 use clap::Parser;
 use std::path::PathBuf;
 
-const ABOUT: &str = "A tool to rip samples from tracker music. Supports IT, XM, S3M, MOD and UMX formats.\nThis software is licensed under the LGPLv3, for more infomation please visit: https://github.com/B0ney/xmodits";
+const ABOUT: &str = "A tool to rip samples from tracker music. Supports IT, XM, S3M, MOD, UMX and MPTM formats.\nThis software is licensed under the LGPLv3, for more infomation please visit: https://github.com/B0ney/xmodits-cli";
 
 #[derive(Parser)]
 #[command(author, version, about)]
@@ -32,7 +32,7 @@ pub struct Cli {
     #[arg(default_value_t = 2, short='p', long="index-padding", value_parser=0..=5)]
     pub index_padding: i64,
 
-    #[arg(help = "Do not create a new folder for samples. This can overwrite data, BE CAREFUL!")]
+    #[arg(help = "Do not create a new folder for samples.")]
     #[arg(short, long)]
     pub no_folder: bool,
 
