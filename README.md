@@ -24,6 +24,8 @@
 # Download
 The command line version of xmodits can be downloaded [here](https://github.com/B0ney/xmodits-cli/releases).
 
+If you want a more user friendly version, consider getting the gui version [here](https://github.com/B0ney/xmodits/releases). Do note that the gui version has less supported platforms.
+
 Please have a look at [running on older systems](#running-on-older-systems).
 
 # How to Use
@@ -71,6 +73,14 @@ Build:
 ```shell
 cd xmodits-cli
 cargo build --release
+```
+
+The compiled binary is placed in: ``xmodits-cli/target/release/``
+
+(***nix systems only**) You may get a ``Permission denied`` error if you attempt to run the program. In that case, you'll need to mark the binary as executable:
+
+```shell
+chmod +x xmodits-cli
 ```
 
 (**Optional**) Compile with build metadata embedded in the binary (enables ``--Meta`` flag), **This will take longer to compile**:
