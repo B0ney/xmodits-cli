@@ -2,6 +2,7 @@ use crate::Cli;
 use std::fs::File;
 use std::path::{Path, PathBuf};
 
+use xmodits_lib::common::info::Info;
 use xmodits_lib::{
     common::extract, exporter::AudioFormat, fmt::loader::load_module, interface::ripper::Ripper,
     SampleNamer, SampleNamerTrait,
@@ -33,18 +34,17 @@ pub fn info(cli: Cli) {
     }
 
     let module = &cli.trackers[0];
-    let mut file = File::open(module).unwrap();
-
-    let tracker = load_module(&mut file);
+    let tracker = Info::new(module);
 
     match tracker {
-        Ok(m) => {
+        Ok(Info {
+            name,
+            format,
+            total_samples,
+            total_sample_size,
+        }) => {
             println!(
-                "Module Name: {}\nFormat: {}\nSamples: {}\nApprox Total Sample Size (KiB): {}",
-                m.name(),
-                m.format(),
-                m.total_samples(),
-                m.samples().iter().map(|m| m.length as usize).sum::<usize>() / 1000,
+                "Module Name: {name}\nFormat: {format}\nSamples: {total_samples}\nApprox Total Sample Size (KiB): {total_sample_size}",
             )
         }
         Err(e) => eprintln!("Error {} <-- {}", e, file_name(module)),
@@ -55,9 +55,10 @@ pub fn rip(cli: Cli, destination: PathBuf) {
     let ripper = Ripper::new(build_namer(&cli), get_format(&cli.format).into());
     let filter = strict_loading(cli.strict);
 
-    let files: Vec<PathBuf> = cli.trackers
+    let files: Vec<PathBuf> = cli
+        .trackers
         .into_iter()
-        // .map(expand_tilde) // doesn't work 
+        // .map(expand_tilde) // doesn't work
         .filter(|f| f.is_file())
         .filter(|f| filter(f))
         .collect();
@@ -104,15 +105,7 @@ pub fn rip(cli: Cli, destination: PathBuf) {
 }
 
 fn get_format(format: &str) -> AudioFormat {
-    match format {
-        "wav" => AudioFormat::WAV,
-        "aiff" => AudioFormat::AIFF,
-        "8svx" => AudioFormat::IFF,
-        "s3i" => AudioFormat::S3I,
-        "its" => AudioFormat::ITS,
-        "raw" => AudioFormat::RAW,
-        _ => AudioFormat::WAV,
-    }
+    format.parse().unwrap_or_default()
 }
 
 fn strict_loading(strict: bool) -> impl Fn(&Path) -> bool {
@@ -122,11 +115,7 @@ fn strict_loading(strict: bool) -> impl Fn(&Path) -> bool {
                 "it", "xm", "s3m", "mod", "umx", "mptm", "IT", "XM", "S3M", "MOD", "UMX", "MPTM",
             ];
 
-            let Some(ext) = path
-                .extension()
-                .map(|f| f.to_str())
-                .flatten()
-            else {
+            let Some(ext) = path.extension().map(|f| f.to_str()).flatten() else {
                 return false;
             };
 
