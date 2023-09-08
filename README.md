@@ -112,7 +112,7 @@ You'll most likely get an error like this if you attempt to run the ``*-gnu`` va
 libc.so.6: version `GLIBC_2.18` not found (required by ./xmodits)
 ```
 
-# Licence
+# License
 xmodits-cli is licensed under the LGPLv3
 
 # Other xmodits projects
