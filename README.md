@@ -49,7 +49,7 @@ Note: If the destination is not provided, xmodits will place the ripped samples 
 If you want to customize how ripped samples are named, the following arguments can be used:
 
 |short| long| Description|
-|--|--|--|
+|-|-|-|
 |-s |--strict| ``Enabled by default.`` Only allow files with the supported file extensions: [``it``, ``xm``, ``s3m``, ``mod``, ``umx``, ``mptm``]|
 |-i |--index-only| Ripped samples will only be named with an index.|
 |-r |--index-raw| Preserve internal sample indexing.|
@@ -62,6 +62,7 @@ If you want to customize how ripped samples are named, the following arguments c
 
 ## Commands
 |short|long|description|
+|-|-|-|
 ||--info| Print information about a tracker module. |
 ||--Meta| Print metadata about the binary.|
 |-V|| Print version|
