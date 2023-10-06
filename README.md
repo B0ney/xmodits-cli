@@ -104,9 +104,9 @@ cargo build --release --features="rayon"
 (unless you compile with ``--features="rayon"``).-->
 
 ## Windows
-Windows Vista is the minimum OS that could run xmodits. I tried to get Windows XP working sorry :(
+Minimum supported OS: Windows 7
 
-xmodits is compiled with vcruntime (msvc only) embedded, so it should run out of the box.
+XMODITS is compiled with vcruntime (msvc only) embedded, so it should run out of the box.
 
 ## Linux
 **For backwards (and forwards) compatability, it is recommended that you download the ``*-musl`` variant.**
