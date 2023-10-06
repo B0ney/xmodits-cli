@@ -106,7 +106,7 @@ Repository: {}
 Commit Hash: {}
 Build Target: {}
 Rustc Version: {}
-Target Architechture: {}
+Target Architecture: {}
 Build Time: {}",
         built_info::PKG_NAME,
         built_info::PKG_VERSION,
