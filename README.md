@@ -109,9 +109,9 @@ Minimum supported OS: Windows 7
 XMODITS is compiled with vcruntime (msvc only) embedded, so it should run out of the box.
 
 ## Linux
-**For backwards (and forwards) compatability, it is recommended that you download the ``*-musl`` variant.**
+**For backwards (and forwards) compatibility, it is recommended that you download the ``*-musl`` variant.**
 
-Older linux sytems may have glibc versions too old to run the program.
+Older linux systems may have glibc versions too old to run the program.
 
 You'll most likely get an error like this if you attempt to run the ``*-gnu`` variant:
 ```
