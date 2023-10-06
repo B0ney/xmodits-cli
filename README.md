@@ -59,7 +59,12 @@ If you want to customize how ripped samples are named, the following arguments c
 |-l |--lower| Name samples in lower case. |
 |-g |--prefix| Prefix samples with the tracker's filename. |
 |-f|--fmt| Export samples to the following formats: [ ``wav (default)``, ``aiff``, ``8svx``,``its``,``s3i``, ``raw`` ]|
+
+## Commands
+|short|long|description|
 ||--info| Print information about a tracker module. |
+||--Meta| Print metadata about the binary.|
+|-V|| Print version|
 
 # Building
 Install the Rust compiler if you haven't already: https://www.rust-lang.org/tools/install
