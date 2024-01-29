@@ -1,11 +1,10 @@
 use crate::Cli;
-use std::fs::File;
 use std::path::{Path, PathBuf};
 
 use xmodits_lib::common::info::Info;
 use xmodits_lib::{
-    common::extract, exporter::AudioFormat, fmt::loader::load_module, interface::ripper::Ripper,
-    SampleNamer, SampleNamerTrait,
+    common::extract, exporter::AudioFormat, interface::ripper::Ripper, SampleNamer,
+    SampleNamerTrait,
 };
 
 pub fn build_namer(cli: &Cli) -> Box<dyn SampleNamerTrait> {
