@@ -28,10 +28,16 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: bin
+      - name: Generate Checksum
+        run: |
+          ARTIFACTS="bin"
+          find "$ARTIFACTS" -type f -exec sha256sum '{}' + | sed 's, .*/,  ,' > SHA256SUMS.txt
       - name: Create pre-release
         uses: softprops/action-gh-release@v1
         with:
-          files: bin/*/xmodits-*
+          files: |
+            bin/*/xmodits-*
+            SHA256SUMS.txt
           prerelease: true
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
