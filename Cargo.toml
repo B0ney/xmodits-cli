@@ -24,7 +24,7 @@ shellexpand = "3"
 with_metadata = ["built"]
 
 [build-dependencies]
-built = { version = "0.6", features = ["chrono", "git2"], optional = true }
+built = { version = "0.7", features = ["chrono", "git2"], optional = true }
 
 [profile.release]
 strip = true
