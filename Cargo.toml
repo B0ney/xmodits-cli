@@ -2,7 +2,7 @@
 name = "xmodits"
 authors = ["B0ney - https://github.com/B0ney"]
 description = "XMODITS command line application"
-version = "0.11.3"
+version = "0.11.4"
 edition = "2021"
 license = "LGPLv3"
 repository = "https://github.com/B0ney/xmodits-cli"
@@ -10,7 +10,7 @@ repository = "https://github.com/B0ney/xmodits-cli"
 
 [dependencies.xmodits-lib]
 git = "https://github.com/B0ney/xmodits-lib.git"
-rev = "ce5d922"
+rev = "1773dfb"
 
 [dependencies]
 clap = { version = "4", features = ["derive", "cargo", "wrap_help"] }

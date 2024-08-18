@@ -1042,7 +1042,7 @@ checksum = "589f6da84c646204747d1270a2a5661ea66ed1cced2631d546fdfb155959f9ec"
 
 [[package]]
 name = "xmodits"
-version = "0.11.3"
+version = "0.11.4"
 dependencies = [
  "built",
  "clap",
@@ -1054,8 +1054,8 @@ dependencies = [
 
 [[package]]
 name = "xmodits-lib"
-version = "0.8.0"
-source = "git+https://github.com/B0ney/xmodits-lib.git?rev=ce5d922#ce5d922e793dffe7c067e3bbde9da65b9a3a5a80"
+version = "0.9.0"
+source = "git+https://github.com/B0ney/xmodits-lib.git?rev=1773dfb#1773dfbaed5981d56f33fc692878d56c196afbe9"
 dependencies = [
  "ascii",
  "bytemuck",

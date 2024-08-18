@@ -1,10 +1,10 @@
 use crate::Cli;
 use std::path::{Path, PathBuf};
 
-use xmodits_lib::common::info::Info;
+use xmodits_lib::info::Info;
 use xmodits_lib::{
-    common::extract, exporter::AudioFormat, interface::ripper::Ripper, SampleNamer,
-    SampleNamerTrait,
+    export::{Format, Ripper, SampleNamer, SampleNamerTrait},
+    extract,
 };
 
 pub fn build_namer(cli: &Cli) -> Box<dyn SampleNamerTrait> {
@@ -103,7 +103,7 @@ pub fn rip(cli: Cli, destination: PathBuf) {
     println!("Done!");
 }
 
-fn get_format(format: &str) -> AudioFormat {
+fn get_format(format: &str) -> Format {
     format.parse().unwrap_or_default()
 }
 
