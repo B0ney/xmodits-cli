@@ -10,7 +10,7 @@ repository = "https://github.com/B0ney/xmodits-cli"
 
 [dependencies.xmodits-lib]
 git = "https://github.com/B0ney/xmodits-lib.git"
-rev = "1773dfb"
+rev = "c2ef080"
 
 [dependencies]
 clap = { version = "4", features = ["derive", "cargo", "wrap_help"] }
