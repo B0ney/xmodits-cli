@@ -3,7 +3,7 @@ use std::path::{Path, PathBuf};
 
 use xmodits_lib::info::Info;
 use xmodits_lib::{
-    export::{Format, Ripper, SampleNamer, SampleNamerTrait},
+    export::{AudioFormat, Ripper, SampleNamer, SampleNamerTrait},
     extract,
 };
 
@@ -51,7 +51,7 @@ pub fn info(cli: Cli) {
 }
 
 pub fn rip(cli: Cli, destination: PathBuf) {
-    let ripper = Ripper::new(build_namer(&cli), get_format(&cli.format).into());
+    let ripper = Ripper::new(build_namer(&cli), get_format(&cli.format));
     let filter = strict_loading(cli.strict);
 
     let files: Vec<PathBuf> = cli
@@ -103,7 +103,7 @@ pub fn rip(cli: Cli, destination: PathBuf) {
     println!("Done!");
 }
 
-fn get_format(format: &str) -> Format {
+fn get_format(format: &str) -> AudioFormat {
     format.parse().unwrap_or_default()
 }
 
