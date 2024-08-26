@@ -33,6 +33,7 @@ jobs:
           files: |
             bin/*/xmodits-*
             SHA256SUMS.txt
+          draft: true
           prerelease: true
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
